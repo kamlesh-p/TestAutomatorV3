@@ -5,8 +5,8 @@
         <artifactId>automator</artifactId>
         <version>3.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>test.automator.amr</groupId>
-    <artifactId>client</artifactId>
+    <groupId>test.automator</groupId>
+    <artifactId>amr.client</artifactId>
     <version>3.0.1-SNAPSHOT</version>
 
 

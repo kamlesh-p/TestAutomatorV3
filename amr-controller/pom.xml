@@ -5,7 +5,7 @@
     <artifactId>automator</artifactId>
     <version>3.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>test.automator.amr</groupId>
-  <artifactId>controller</artifactId>
+  <groupId>test.automator</groupId>
+  <artifactId>amr.controller</artifactId>
   <version>3.0.1-SNAPSHOT</version>
 </project>
