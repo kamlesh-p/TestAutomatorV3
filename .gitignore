@@ -1,2 +1,10 @@
 /.settings
 /.project
+/amr-client/.gitignore
+/amr-client/*.project
+/amr-client/.settings/*.prefs
+/amr-common/*.gitignore
+/amr-controller/*.gitignore
+/amr-common/*.project
+/amr-common/.settings/*.prefs
+/amr-controller/.settings/*.prefs
