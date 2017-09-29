@@ -11,6 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <apache.poi.version>3.12</apache.poi.version>
+        <apache.poi.ooxml.version>3.12</apache.poi.ooxml.version>
     </properties>
 
     <modules>

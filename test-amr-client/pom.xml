@@ -14,7 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>amr.controller</artifactId>
+            <artifactId>test-amr-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>test-amr-controller</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
