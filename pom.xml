@@ -14,8 +14,8 @@
     </properties>
 
     <modules>
-        <module>amr-common</module>
-        <module>amr-controller</module>
-        <module>amr-client</module>
+        <module>test-amr-common</module>
+        <module>test-amr-controller</module>
+        <module>test-amr-client</module>
     </modules>
 </project>

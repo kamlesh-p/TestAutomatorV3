@@ -5,10 +5,18 @@
         <artifactId>automator</artifactId>
         <version>3.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>amr.common</artifactId>
+    <artifactId>test-amr-client</artifactId>
     <name>${project.artifactId}</name>
     <description>
-        Common module unit of TestAutomatorV3.
+        GUI module of TestAutomatorV3.
     </description>
-    
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>amr.controller</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

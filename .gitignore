@@ -8,3 +8,10 @@
 /amr-common/*.project
 /amr-common/.settings/*.prefs
 /amr-controller/.settings/*.prefs
+/test-amr-client/*.classpath
+/test-amr-client/*.gitignore
+/test-amr-client/*.project
+/test-amr-client/.settings/*.prefs
+*.gitignore
+*.project
+*.prefs
