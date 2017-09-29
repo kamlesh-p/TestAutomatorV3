@@ -4,6 +4,10 @@
     <artifactId>automator</artifactId>
     <version>3.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>
+        Main pom of TestAutomatorV3.
+    </description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

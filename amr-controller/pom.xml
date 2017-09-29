@@ -5,7 +5,11 @@
         <artifactId>automator</artifactId>
         <version>3.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>test.automator</groupId>
+
     <artifactId>amr.controller</artifactId>
+    <name>${project.artifactId}</name>
+    <description>
+        Core module unit of TestAutomatorV3.
+    </description>
 
 </project>
