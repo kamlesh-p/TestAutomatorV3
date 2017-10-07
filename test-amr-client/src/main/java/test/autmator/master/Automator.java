@@ -10,9 +10,9 @@ import test.autmator.gui.SoapOrRestWindow;
  * 
  * It performs the below tasks:
  * 1. Creates testCases depending upon the node details from input Excel
- * 2. creates a validation groovy script which is used in data driven testing of web services.
- * 3. creates Test data file(DataSource file and DataSink file), used as input and output file in data driven test
- * 4. creates a property file used in soapui map input excel properties.
+ * 2. Creates a validation Groovy script which is used in data driven testing of web services.
+ * 3. Creates Test data file(DataSource file and DataSink file), used as input and output file in data driven test
+ * 4. Creates a property file used in SoapUI map input excel properties.
  * 
  * Initially designed to create test artifacts for soap web services, later has been enhanced for rest web services.
  * 

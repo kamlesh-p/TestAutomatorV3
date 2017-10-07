@@ -116,7 +116,7 @@ public class SoapOrRestWindow {
                 }
             }
         });
-        btnConfig.setBounds(187, 197, 116, 23);
+        btnConfig.setBounds(187, 197, 116, 23);  
         frame.getContentPane().add(btnConfig);
     }
 }
