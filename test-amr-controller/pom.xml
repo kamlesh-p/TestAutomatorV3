@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>test.automator</groupId>
 		<artifactId>automator</artifactId>
-		<version>3.0.4-SNAPSHOT</version>
+		<version>3.0.6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>test-amr-controller</artifactId>

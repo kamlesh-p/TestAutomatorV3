@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>test.automator</groupId>
 	<artifactId>automator</artifactId>
-	<version>3.0.4-SNAPSHOT</version>
+	<version>3.0.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<description>
@@ -45,7 +45,7 @@
 			<uniqueVersion>false</uniqueVersion>
 			<id>testautomator03</id>
 			<name>Repository for test automator v3</name>
-			<url>scp://repo/maven2</url>
+			<url>https://github.com/kamlesh-p/TestAutomatorV3/tags</url>
 			<layout>default</layout>
 		</repository>
 		<!--snapshotRepository>
