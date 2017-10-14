@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>test.automator</groupId>
 	<artifactId>automator</artifactId>
-	<version>3.0.3-SNAPSHOT</version>
+	<version>3.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<description>
@@ -49,13 +48,13 @@
 			<url>scp://repo/maven2</url>
 			<layout>default</layout>
 		</repository>
-		<snapshotRepository>
+		<!--snapshotRepository>
 			<uniqueVersion>true</uniqueVersion>
 			<id>propSnap</id>
 			<name>Propellors Snapshots</name>
 			<url>sftp://propellers.net/maven</url>
 			<layout>legacy</layout>
-		</snapshotRepository>
+		</snapshotRepository-->
 	</distributionManagement>
 
 	<build>
