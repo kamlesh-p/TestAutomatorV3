@@ -39,10 +39,8 @@ public class ReadExcelSheetTestSpecGen {
     public ReadExcelSheetTestSpecGen(final String xlFilePath) {
         XlsFilePath = xlFilePath;
         LOGGER.info("Reading Excel file (Test Gen): " + xlFilePath);
-        try {
-            File excel = new File(XlsFilePath);
-            FileInputStream fis = new FileInputStream(excel);
-
+        File excel = new File(XlsFilePath);
+        try (FileInputStream fis = new FileInputStream(excel);) {
             if (XlsFilePath.contains(".xlsx")) {
                 workbook = new XSSFWorkbook(fis);
             } else if (XlsFilePath.contains(".xls")) {
@@ -55,9 +53,7 @@ public class ReadExcelSheetTestSpecGen {
     }
 
     public Object[] getRowData(final int SheetNum, final int rowNum) throws Exception {
-
         try {
-
             sheet = workbook.getSheetAt(SheetNum);
             // int rowCount = sheet.getLastRowNum() + 1;
             int colNum = sheet.getRow(0).getLastCellNum();
@@ -99,9 +95,7 @@ public class ReadExcelSheetTestSpecGen {
                 }
 
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Input Data File might be corrupted.\nPress CTRL+SHIFT+END to get last used cell on the worksheet");
             e.printStackTrace();
         }

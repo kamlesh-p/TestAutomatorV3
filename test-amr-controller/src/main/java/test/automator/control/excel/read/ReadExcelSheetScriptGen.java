@@ -35,10 +35,8 @@ public class ReadExcelSheetScriptGen {
     public ReadExcelSheetScriptGen(final String xlFilePath) {
         XlsFilePath = xlFilePath;
         LOGGER.info("Reading Excel file (Script Gen): " + xlFilePath);
-        try {
-            File excel = new File(XlsFilePath);
-            FileInputStream fis = new FileInputStream(excel);
-
+        File excel = new File(XlsFilePath);
+        try (FileInputStream fis = new FileInputStream(excel);) {
             if (XlsFilePath.contains(".xlsx")) {
                 workbook = new XSSFWorkbook(fis);
             } else if (XlsFilePath.contains(".xls")) {
@@ -52,7 +50,6 @@ public class ReadExcelSheetScriptGen {
 
     public String[] getColumnData(final int sheetNum, final int colNum) {
         try {
-
             sheet = workbook.getSheetAt(sheetNum);
             row = sheet.getRow(0);
             int rowNum = sheet.getLastRowNum() + 1;
