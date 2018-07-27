@@ -1,6 +1,7 @@
 package test.autmator.gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -14,15 +15,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import test.automator.common.ExceptionHandler;
+import test.automator.constants.Constants;
 import test.automator.control.xml.parse.EditInputExcel;
 import test.automator.control.xml.parse.ParseXML;
-
-import test.automator.common.ExceptionHandler;
-
-import test.automator.constants.Constants;
 
 /**
  * This class asks for the User input for Request XML and Response XML.
@@ -33,15 +33,16 @@ import test.automator.constants.Constants;
  */
 public class XmlRequestWindow {
 
-    private JFrame     frame;
-    private JTextArea  reqXMLTextField;
-    private JTextArea  resXMLTextField;
-    JCheckBox          chckbxRemoverepeatednodes;
-    JCheckBox          chckbxUpdateAutomatorOutput;
-    Boolean            removeRepestedNodes;
-    Boolean            updateAutomatorOutputFileNames;
-    private JTextField serviceNameTextField;
-    private JTextField operationNameTextField;
+    private static final String VERDANA = "Verdana";
+    private JFrame              frame;
+    private JTextArea           reqXMLTextField;
+    private JTextArea           resXMLTextField;
+    JCheckBox                   chckbxRemoverepeatednodes;
+    JCheckBox                   chckbxUpdateAutomatorOutput;
+    Boolean                     removeRepestedNodes;
+    Boolean                     updateAutomatorOutputFileNames;
+    private JTextField          serviceNameTextField;
+    private JTextField          operationNameTextField;
 
     /**
      * Launch the application.
@@ -71,9 +72,13 @@ public class XmlRequestWindow {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+        javax.swing.UIManager.put("OptionPane.font", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.messageFont", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.buttonFont", new Font(VERDANA, Font.PLAIN, 16));
+
         frame = new JFrame();
-        frame.setTitle("Automator_V2");
-        frame.setBounds(100, 100, 450, 375);
+        frame.setTitle("Automator_V3");
+        frame.setBounds(100, 100, 980, 740);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -84,6 +89,7 @@ public class XmlRequestWindow {
 
         // hidden button to clear text-fields
         final JButton btnClear = new JButton("Clear");
+        btnClear.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnClear.setVisible(false);
         btnClear.addActionListener(new ActionListener() {
 
@@ -95,46 +101,59 @@ public class XmlRequestWindow {
                 }
             }
         });
-        btnClear.setBounds(10, 303, 89, 23);
+        btnClear.setBounds(50, 615, 107, 40);
         frame.getContentPane().add(btnClear);
 
         JLabel lblService = new JLabel("Service Name:");
-        lblService.setBounds(50, 65, 89, 14);
+        lblService.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblService.setBounds(50, 74, 148, 22);
         frame.getContentPane().add(lblService);
 
         JLabel lblOperationName = new JLabel("Operation Name: ");
-        lblOperationName.setBounds(50, 112, 98, 14);
+        lblOperationName.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblOperationName.setBounds(50, 122, 171, 18);
         frame.getContentPane().add(lblOperationName);
 
         JLabel lblRequestXml = new JLabel("Request XML:");
-        lblRequestXml.setBounds(50, 152, 89, 14);
+        lblRequestXml.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblRequestXml.setBounds(50, 169, 148, 30);
         frame.getContentPane().add(lblRequestXml);
 
         JLabel lblResponseXml = new JLabel("Response XML:");
-        lblResponseXml.setBounds(50, 229, 89, 14);
+        lblResponseXml.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblResponseXml.setBounds(50, 371, 154, 40);
         frame.getContentPane().add(lblResponseXml);
 
         reqXMLTextField = new JTextArea();
-        reqXMLTextField.setBounds(149, 152, 247, 53);
-        frame.getContentPane().add(reqXMLTextField);
+        reqXMLTextField.setFont(new Font("Monospaced", Font.PLAIN, 20));
+        JScrollPane scroll1 = new JScrollPane(reqXMLTextField, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll1.setSize(641, 171);
+        scroll1.setLocation(224, 166);
         reqXMLTextField.setColumns(10);
+        frame.getContentPane().add(scroll1);
 
         resXMLTextField = new JTextArea();
+        resXMLTextField.setFont(new Font("Monospaced", Font.PLAIN, 20));
         resXMLTextField.setColumns(10);
-        resXMLTextField.setBounds(149, 229, 247, 53);
-        frame.getContentPane().add(resXMLTextField);
+        JScrollPane scroll2 = new JScrollPane(resXMLTextField, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll2.setSize(646, 186);
+        scroll2.setLocation(219, 368);
+        frame.getContentPane().add(scroll2);
 
         serviceNameTextField = new JTextField();
-        serviceNameTextField.setBounds(151, 62, 247, 20);
+        serviceNameTextField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        serviceNameTextField.setBounds(224, 74, 435, 30);
         frame.getContentPane().add(serviceNameTextField);
         serviceNameTextField.setColumns(10);
 
         operationNameTextField = new JTextField();
-        operationNameTextField.setBounds(152, 109, 246, 20);
+        operationNameTextField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        operationNameTextField.setBounds(224, 116, 435, 30);
         frame.getContentPane().add(operationNameTextField);
         operationNameTextField.setColumns(10);
 
         JButton btnNewButton = new JButton("Next");
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(final ActionEvent e) {
@@ -144,8 +163,7 @@ public class XmlRequestWindow {
                 String resXML = resXMLTextField.getText();
                 String cmd = e.getActionCommand();
 
-                if (cmd.equals("Next"))
-                {
+                if (cmd.equals("Next")) {
                     System.out.println(reqXML);
                     System.out.println(resXML);
                     Object[] options = { "Back", "Continue" };
@@ -186,18 +204,18 @@ public class XmlRequestWindow {
                 }
             }
         });
-        btnNewButton.setBounds(309, 303, 89, 23);
+        btnNewButton.setBounds(685, 615, 180, 40);
         frame.getContentPane().add(btnNewButton);
 
         JButton btnSkip = new JButton("Skip");
+        btnSkip.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnSkip.addActionListener(new ActionListener() {
 
             public void actionPerformed(final ActionEvent e) {
                 String cmd = e.getActionCommand();
                 Constants.SERVICE_NAME = serviceNameTextField.getText();
                 Constants.OPERATION_NAME = operationNameTextField.getText();
-                if (cmd.equals("Skip"))
-                {
+                if (cmd.equals("Skip")) {
                     frame.dispose();
                     try {
                         new NewFilesNameWindow();
@@ -208,10 +226,11 @@ public class XmlRequestWindow {
                 }
             }
         });
-        btnSkip.setBounds(105, 303, 89, 23);
+        btnSkip.setBounds(224, 615, 199, 40);
         frame.getContentPane().add(btnSkip);
 
         JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnBack.addActionListener(new ActionListener() {
 
             public void actionPerformed(final ActionEvent e) {
@@ -220,10 +239,11 @@ public class XmlRequestWindow {
                 SoapOrRestWindow.main(null);
             }
         });
-        btnBack.setBounds(210, 303, 89, 23);
+        btnBack.setBounds(460, 615, 199, 40);
         frame.getContentPane().add(btnBack);
 
         chckbxRemoverepeatednodes = new JCheckBox("Remove Repeated Nodes");
+        chckbxRemoverepeatednodes.setFont(new Font("Tahoma", Font.PLAIN, 20));
         chckbxRemoverepeatednodes.addItemListener(new ItemListener() {
 
             public void itemStateChanged(final ItemEvent e) {
@@ -231,10 +251,11 @@ public class XmlRequestWindow {
             }
         });
         chckbxRemoverepeatednodes.setSelected(true);
-        chckbxRemoverepeatednodes.setBounds(29, 7, 207, 23);
+        chckbxRemoverepeatednodes.setBounds(29, 7, 444, 23);
         frame.getContentPane().add(chckbxRemoverepeatednodes);
 
         chckbxUpdateAutomatorOutput = new JCheckBox("Update Automator output file names");
+        chckbxUpdateAutomatorOutput.setFont(new Font("Tahoma", Font.PLAIN, 20));
         chckbxUpdateAutomatorOutput.addItemListener(new ItemListener() {
 
             public void itemStateChanged(final ItemEvent e) {
@@ -243,8 +264,9 @@ public class XmlRequestWindow {
         });
         chckbxUpdateAutomatorOutput.setSelected(true);
         // chckbxUpdateAutomatorOutput.setVisible(false);
-        chckbxUpdateAutomatorOutput.setBounds(29, 33, 261, 23);
+        chckbxUpdateAutomatorOutput.setBounds(29, 33, 444, 23);
         frame.getContentPane().add(chckbxUpdateAutomatorOutput);
+        frame.setResizable(false);
 
     }
 }

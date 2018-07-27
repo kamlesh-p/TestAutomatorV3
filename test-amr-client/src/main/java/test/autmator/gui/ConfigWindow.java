@@ -1,6 +1,7 @@
 package test.autmator.gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -21,13 +22,14 @@ import javax.swing.JTextField;
  */
 public class ConfigWindow {
 
-    private JFrame     frame;
-    private JTextField txtTestspectemplatexls;
-    private JTextField txtTestdatatemplatexls;
-    private JTextField txtTestgeneratorxlsx;
-    private JTextField textField_3;
-    private JTextField textField_4;
-    private JTextField textField_5;
+    private JFrame       frame;
+    private JTextField   txtTestspectemplatexls;
+    private JTextField   txtTestdatatemplatexls;
+    private JTextField   txtTestgeneratorxlsx;
+    private JTextField   textField_3;
+    private JTextField   textField_4;
+    private JTextField   textField_5;
+    private final String VERDANA = "Verdana";
 
     /**
      * Launch the application.
@@ -57,8 +59,13 @@ public class ConfigWindow {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+
+        javax.swing.UIManager.put("OptionPane.font", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.messageFont", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.buttonFont", new Font(VERDANA, Font.PLAIN, 16));
+
         frame = new JFrame();
-        frame.setBounds(100, 100, 480, 315);
+        frame.setBounds(100, 100, 980, 720);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         // set icon image for frame
@@ -163,6 +170,6 @@ public class ConfigWindow {
         });
         btnCancel.setBounds(224, 230, 89, 23);
         frame.getContentPane().add(btnCancel);
-
+        frame.setResizable(false);
     }
 }

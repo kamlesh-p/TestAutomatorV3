@@ -1,6 +1,7 @@
 package test.autmator.gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -18,7 +19,8 @@ import javax.swing.JLabel;
  */
 public class WorkInProgress {
 
-    private JFrame frame;
+    private static final String VERDANA = "Verdana";
+    private JFrame              frame;
 
     /**
      * Launch the application.
@@ -48,8 +50,12 @@ public class WorkInProgress {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+        javax.swing.UIManager.put("OptionPane.font", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.messageFont", new Font(VERDANA, Font.PLAIN, 16));
+        javax.swing.UIManager.put("OptionPane.buttonFont", new Font(VERDANA, Font.PLAIN, 16));
+
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 980, 720);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -61,10 +67,11 @@ public class WorkInProgress {
         URL iconURL1 = getClass().getResource("/work-in-progress.jpg");
         ImageIcon icon = new ImageIcon(iconURL1);
         JLabel label = new JLabel(icon);
-        label.setBounds(75, 11, 307, 207);
+        label.setBounds(342, 233, 307, 207);
         frame.getContentPane().add(label);
 
         JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
         btnBack.addActionListener(new ActionListener() {
 
             public void actionPerformed(final ActionEvent e) {
@@ -73,8 +80,8 @@ public class WorkInProgress {
                 SoapOrRestWindow.main(null);
             }
         });
-        btnBack.setBounds(23, 228, 89, 23);
+        btnBack.setBounds(439, 506, 124, 33);
         frame.getContentPane().add(btnBack);
-
+        frame.setResizable(false);
     }
 }
