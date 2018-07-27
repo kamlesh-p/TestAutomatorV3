@@ -13,3 +13,8 @@ It performs the below tasks:
 2. Creates a validation Groovy script which is used in data driven testing of web services.
 3. Creates Test data file(DataSource file and DataSink file), used as input and output file in data driven test
 4. Creates a property file used in SoapUI map input excel properties.
+
+
+
+To create executable jar file:
+- run `mvn assembly:assembly` in test-amr-client
