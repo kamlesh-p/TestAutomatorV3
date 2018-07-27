@@ -118,6 +118,7 @@ public class WriteExcelTestDataGen {
 
                 FileOutputStream fos = new FileOutputStream(outputFile);
                 workbook.write(fos);
+                workbook1.close();
                 fos.close();
             }
         }
@@ -170,6 +171,7 @@ public class WriteExcelTestDataGen {
         workbook.setSheetName(SheetNo, safeName);
         FileOutputStream fos = new FileOutputStream(file);
         workbook.write(fos);
+        workbook.close();
         fos.close();
     }
 

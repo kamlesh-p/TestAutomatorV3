@@ -23,20 +23,19 @@ public class ReadConfig {
     Properties                  configProp = new Properties();
 
     public ReadConfig(final String PropertyPath) {
-        FileInputStream input = null;
-        try {
 
-            input = new FileInputStream(new File(PropertyPath));
-            Scanner in = new Scanner(input);
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try (FileInputStream input = new FileInputStream(new File(PropertyPath));
+                Scanner in = new Scanner(input);
+                ByteArrayOutputStream out = new ByteArrayOutputStream();) {
             while (in.hasNext()) {
                 out.write(in.nextLine().replace("\\", "\\\\").getBytes());
                 out.write("\n".getBytes());
             }
-            InputStream is = new ByteArrayInputStream(out.toByteArray());
-            configProp.load(is);
-            in.close();
-            is.close();
+            try (InputStream is = new ByteArrayInputStream(out.toByteArray());) {
+                configProp.load(is);
+                in.close();
+                is.close();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "CONFIGURATION FILE NOT FOUND!\n\n" + e);
             e.printStackTrace();

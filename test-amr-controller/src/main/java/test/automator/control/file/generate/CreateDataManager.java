@@ -1,5 +1,7 @@
 package test.automator.control.file.generate;
 
+import static test.automator.constants.Constants.TEST_DATA_TEMPLATE_NAME;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import test.automator.constants.Constants;
 import test.automator.constants.TestDataConstants;
-import static test.automator.constants.Constants.TEST_DATA_TEMPLATE_NAME;
 
 /**
  * This class create new files to be edited.
@@ -39,8 +40,7 @@ public class CreateDataManager {
                 newFileName1 = Constants.DEFAULT_TEST_DATA_FILE_NAME;
             }
 
-        }
-        else {
+        } else {
             if (TEST_DATA_TEMPLATE_NAME.endsWith(".xlsx") && !newTestDataName.endsWith(".xlsx")) {
                 newFileName1 = newTestDataName + ".xlsx";
             } else if (newTestDataName.endsWith(".xlsx") || newTestDataName.endsWith(".xls")) {
@@ -58,14 +58,12 @@ public class CreateDataManager {
                 newFileName2 = Constants.DEFAULT_TEST_DATA_TEMPLATE_NAME;
             }
 
-        }
-        else {
+        } else {
             if (TEST_DATA_TEMPLATE_NAME.endsWith(".xlsx") && !newTestTemplateName.endsWith(".xlsx")) {
                 newFileName2 = newTestDataName + ".xlsx";
             } else if (newTestTemplateName.endsWith(".xlsx") || newTestTemplateName.contains(".xls")) {
                 newFileName2 = newTestTemplateName;
-            }
-            else {
+            } else {
                 newFileName2 = newTestTemplateName + ".xls";
             }
         }
@@ -86,6 +84,7 @@ public class CreateDataManager {
             }
             FileOutputStream out = new FileOutputStream(TestDataConstants.NEW_TESTDATA_PATH + "/" + newFileName1);
             workbook.write(out);
+            workbook.close();
             out.close();
 
         } catch (FileNotFoundException e) {
@@ -113,6 +112,7 @@ public class CreateDataManager {
                 }
                 FileOutputStream out = new FileOutputStream(TestDataConstants.NEW_TESTDATA_PATH + "/" + newFileName2);
                 workbook.write(out);
+                workbook.close();
                 out.close();
             }
 
