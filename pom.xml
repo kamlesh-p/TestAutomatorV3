@@ -43,10 +43,10 @@
 
     <distributionManagement>
         <repository>
-            <uniqueVersion>false</uniqueVersion>
+            <uniqueVersion>true</uniqueVersion>
             <id>automator</id>
             <name>Repository for test automator v3</name>
-			<!--url>https://github.com/kamlesh-p/TestAutomatorV3/releases</url-->
+			<url>file:///D:/release</url>
             <layout>default</layout>
         </repository>
 		<!--snapshotRepository>

@@ -6,14 +6,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.WorkbookUtil;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import test.automator.constants.Constants;
 import test.automator.constants.TestCaseConstants;
@@ -39,11 +40,11 @@ public class WriteExcelTestDataGen {
         File excel = new File(infilename);
         FileInputStream fis = new FileInputStream(excel);
         if (infilename.endsWith("xlsx")) {
-            workbook = new XSSFWorkbook(fis);
+            workbook = WorkbookFactory.create(fis);
             sheet = workbook.getSheetAt(SheetNum);
             fis.close();
         } else if (infilename.endsWith("xls")) {
-            workbook = new HSSFWorkbook(fis);
+            workbook = WorkbookFactory.create(fis);
             sheet = workbook.getSheetAt(SheetNum);
             fis.close();
         } else {
@@ -76,10 +77,10 @@ public class WriteExcelTestDataGen {
         File excel1 = new File(inputfile);
         FileInputStream fis1 = new FileInputStream(excel1);
         if (inputfile.endsWith("xlsx")) {
-            workbook1 = new XSSFWorkbook(fis1);
+            workbook1 = WorkbookFactory.create(fis1);
             fis1.close();
         } else if (inputfile.endsWith("xls")) {
-            workbook1 = new HSSFWorkbook(fis1);
+            workbook1 = WorkbookFactory.create(fis1);
             fis1.close();
         } else {
             fis1.close();
@@ -157,14 +158,14 @@ public class WriteExcelTestDataGen {
         return result.toString();
     }
 
-    public static void updateSheetName(final String file, final String sheetName, final int SheetNo) throws IOException {
+    public static void updateSheetName(final String file, final String sheetName, final int SheetNo) throws IOException, EncryptedDocumentException, InvalidFormatException {
         File excel = new File(file);
         FileInputStream fis = new FileInputStream(excel);
         Workbook workbook;
         if (file.endsWith(".xlsx")) {
-            workbook = new XSSFWorkbook(fis);
+            workbook = WorkbookFactory.create(fis);
         } else {
-            workbook = new HSSFWorkbook(fis);
+            workbook = WorkbookFactory.create(fis);
         }
 
         String safeName = WorkbookUtil.createSafeSheetName(sheetName); // this utility replaces invalid characters with a space (' ')

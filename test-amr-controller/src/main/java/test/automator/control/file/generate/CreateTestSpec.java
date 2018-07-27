@@ -31,13 +31,11 @@ public class CreateTestSpec {
 
         if (newFileNameGetter.equals("Use Default") || newFileNameGetter.equals("")) {
             newFileName = Constants.DEFAULT_TEST_SPEC_NAME;
-        }
-        else {
-            if (newFileNameGetter.contains(".xlsx")) {
+        } else {
+            if (newFileNameGetter.contains(".xls")) {
                 newFileName = newFileNameGetter;
-            }
-            else {
-                newFileName = newFileNameGetter + ".xlsx";
+            } else {
+                newFileName = newFileNameGetter + ".xls";
             }
         }
         NEW_TESTSPEC_NAME_WITH_PATH = TestCaseConstants.NEW_FILE_PATH + "/" + newFileName;
