@@ -2,8 +2,6 @@ package test.autmator.gui;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -15,161 +13,150 @@ import javax.swing.JTextField;
 
 /**
  * NOT USED:
- * This GUI class was designed with the intent to provide user-input window for config file editing link: but has been replaced with a direct link to config file.
- * 
+ * This GUI class was designed with the intent to provide user-input window for config file editing link: but has been
+ * replaced with a direct link to config file.
+ *
  * @author kamalesh.p
- * 
+ *
  */
 public class ConfigWindow {
 
-    private JFrame       frame;
-    private JTextField   txtTestspectemplatexls;
-    private JTextField   txtTestdatatemplatexls;
-    private JTextField   txtTestgeneratorxlsx;
-    private JTextField   textField_3;
-    private JTextField   textField_4;
-    private JTextField   textField_5;
-    private final String VERDANA = "Verdana";
+	private JFrame frame;
+	private JTextField txtTestspectemplatexls;
+	private JTextField txtTestdatatemplatexls;
+	private JTextField txtTestgeneratorxlsx;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private final String VERDANA = "Verdana";
 
-    /**
-     * Launch the application.
-     */
-    public static void main(final String[] args) {
-        EventQueue.invokeLater(new Runnable() {
+	/**
+	 * Launch the application.
+	 */
+	public static void main(final String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				ConfigWindow window = new ConfigWindow();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
 
-            public void run() {
-                try {
-                    ConfigWindow window = new ConfigWindow();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+	/**
+	 * Create the application.
+	 */
+	public ConfigWindow() {
+		initialize();
+	}
 
-    /**
-     * Create the application.
-     */
-    public ConfigWindow() {
-        initialize();
-    }
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
 
-    /**
-     * Initialize the contents of the frame.
-     */
-    private void initialize() {
+		javax.swing.UIManager.put("OptionPane.font", new Font(VERDANA, Font.PLAIN, 16));
+		javax.swing.UIManager.put("OptionPane.messageFont", new Font(VERDANA, Font.PLAIN, 16));
+		javax.swing.UIManager.put("OptionPane.buttonFont", new Font(VERDANA, Font.PLAIN, 16));
 
-        javax.swing.UIManager.put("OptionPane.font", new Font(VERDANA, Font.PLAIN, 16));
-        javax.swing.UIManager.put("OptionPane.messageFont", new Font(VERDANA, Font.PLAIN, 16));
-        javax.swing.UIManager.put("OptionPane.buttonFont", new Font(VERDANA, Font.PLAIN, 16));
+		frame = new JFrame();
+		frame.setBounds(100, 100, 980, 720);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		// set icon image for frame
+		URL iconURL = getClass().getResource("/Manipulator.png");
+		ImageIcon img = new ImageIcon(iconURL);
+		frame.setIconImage(img.getImage());
 
-        frame = new JFrame();
-        frame.setBounds(100, 100, 980, 720);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-        // set icon image for frame
-        URL iconURL = getClass().getResource("/Manipulator.png");
-        ImageIcon img = new ImageIcon(iconURL);
-        frame.setIconImage(img.getImage());
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Generate Test Case");
+		chckbxNewCheckBox.setSelected(true);
+		chckbxNewCheckBox.setBounds(30, 7, 150, 23);
+		frame.getContentPane().add(chckbxNewCheckBox);
 
-        JCheckBox chckbxNewCheckBox = new JCheckBox("Generate Test Case");
-        chckbxNewCheckBox.setSelected(true);
-        chckbxNewCheckBox.setBounds(30, 7, 150, 23);
-        frame.getContentPane().add(chckbxNewCheckBox);
+		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(e -> {
 
-        JButton btnOk = new JButton("OK");
-        btnOk.addActionListener(new ActionListener() {
+			// String TestSpecTemplateName = txtTestspectemplatexls.getText();
+			// String TestDataTemplateName = txtTestdatatemplatexls.getText();
+			// String TestInputDataFileName = txtTestgeneratorxlsx.getText();
 
-            public void actionPerformed(final ActionEvent e) {
+			frame.dispose();
+			new SoapOrRestWindow();
+			SoapOrRestWindow.main(null);
+		});
+		btnOk.setBounds(356, 230, 86, 23);
+		frame.getContentPane().add(btnOk);
 
-                // String TestSpecTemplateName = txtTestspectemplatexls.getText();
-                // String TestDataTemplateName = txtTestdatatemplatexls.getText();
-                // String TestInputDataFileName = txtTestgeneratorxlsx.getText();
+		JButton btnNewButton = new JButton("Test Case Properties");
+		btnNewButton.setBounds(30, 37, 159, 23);
+		frame.getContentPane().add(btnNewButton);
 
-                frame.dispose();
-                new SoapOrRestWindow();
-                SoapOrRestWindow.main(null);
-            }
-        });
-        btnOk.setBounds(356, 230, 86, 23);
-        frame.getContentPane().add(btnOk);
+		JButton btnNewButton_1 = new JButton("Script Properties");
+		btnNewButton_1.setBounds(214, 37, 159, 23);
+		frame.getContentPane().add(btnNewButton_1);
 
-        JButton btnNewButton = new JButton("Test Case Properties");
-        btnNewButton.setBounds(30, 37, 159, 23);
-        frame.getContentPane().add(btnNewButton);
+		JLabel lblTestspec = new JLabel("TestSpecTemplateName  :");
+		lblTestspec.setBounds(30, 71, 150, 14);
+		frame.getContentPane().add(lblTestspec);
 
-        JButton btnNewButton_1 = new JButton("Script Properties");
-        btnNewButton_1.setBounds(214, 37, 159, 23);
-        frame.getContentPane().add(btnNewButton_1);
+		txtTestspectemplatexls = new JTextField();
+		txtTestspectemplatexls.setText("TestSpecTemplate.xls");
+		txtTestspectemplatexls.setBounds(214, 68, 229, 20);
+		frame.getContentPane().add(txtTestspectemplatexls);
+		txtTestspectemplatexls.setColumns(10);
 
-        JLabel lblTestspec = new JLabel("TestSpecTemplateName  :");
-        lblTestspec.setBounds(30, 71, 150, 14);
-        frame.getContentPane().add(lblTestspec);
+		JLabel lblTestdatatemplatename = new JLabel("TestDataTemplateName   :");
+		lblTestdatatemplatename.setBounds(30, 96, 150, 14);
+		frame.getContentPane().add(lblTestdatatemplatename);
 
-        txtTestspectemplatexls = new JTextField();
-        txtTestspectemplatexls.setText("TestSpecTemplate.xls");
-        txtTestspectemplatexls.setBounds(214, 68, 229, 20);
-        frame.getContentPane().add(txtTestspectemplatexls);
-        txtTestspectemplatexls.setColumns(10);
+		txtTestdatatemplatexls = new JTextField();
+		txtTestdatatemplatexls.setText("TestDataTemplate.xls");
+		txtTestdatatemplatexls.setColumns(10);
+		txtTestdatatemplatexls.setBounds(214, 93, 229, 20);
+		frame.getContentPane().add(txtTestdatatemplatexls);
 
-        JLabel lblTestdatatemplatename = new JLabel("TestDataTemplateName   :");
-        lblTestdatatemplatename.setBounds(30, 96, 150, 14);
-        frame.getContentPane().add(lblTestdatatemplatename);
+		JLabel lblTestinputdatafilename = new JLabel("TestInputDataFileName     :");
+		lblTestinputdatafilename.setBounds(30, 121, 150, 14);
+		frame.getContentPane().add(lblTestinputdatafilename);
 
-        txtTestdatatemplatexls = new JTextField();
-        txtTestdatatemplatexls.setText("TestDataTemplate.xls");
-        txtTestdatatemplatexls.setColumns(10);
-        txtTestdatatemplatexls.setBounds(214, 93, 229, 20);
-        frame.getContentPane().add(txtTestdatatemplatexls);
+		txtTestgeneratorxlsx = new JTextField();
+		txtTestgeneratorxlsx.setText("TestGenerator.xlsx");
+		txtTestgeneratorxlsx.setColumns(10);
+		txtTestgeneratorxlsx.setBounds(214, 118, 229, 20);
+		frame.getContentPane().add(txtTestgeneratorxlsx);
 
-        JLabel lblTestinputdatafilename = new JLabel("TestInputDataFileName     :");
-        lblTestinputdatafilename.setBounds(30, 121, 150, 14);
-        frame.getContentPane().add(lblTestinputdatafilename);
+		JLabel lblPathtotestspectemplateexcel = new JLabel("PathToTestSpecTemplateExcel :");
+		lblPathtotestspectemplateexcel.setBounds(30, 152, 190, 14);
+		frame.getContentPane().add(lblPathtotestspectemplateexcel);
 
-        txtTestgeneratorxlsx = new JTextField();
-        txtTestgeneratorxlsx.setText("TestGenerator.xlsx");
-        txtTestgeneratorxlsx.setColumns(10);
-        txtTestgeneratorxlsx.setBounds(214, 118, 229, 20);
-        frame.getContentPane().add(txtTestgeneratorxlsx);
+		JLabel lblPathtotestdatatemplateexcel = new JLabel("PathToTestDataTemplateExcel  :");
+		lblPathtotestdatatemplateexcel.setBounds(30, 177, 190, 14);
+		frame.getContentPane().add(lblPathtotestdatatemplateexcel);
 
-        JLabel lblPathtotestspectemplateexcel = new JLabel("PathToTestSpecTemplateExcel :");
-        lblPathtotestspectemplateexcel.setBounds(30, 152, 190, 14);
-        frame.getContentPane().add(lblPathtotestspectemplateexcel);
+		JLabel lblPathtotestgeneratorexcel = new JLabel("PathToTestGeneratorExcel         :");
+		lblPathtotestgeneratorexcel.setBounds(30, 202, 190, 14);
+		frame.getContentPane().add(lblPathtotestgeneratorexcel);
 
-        JLabel lblPathtotestdatatemplateexcel = new JLabel("PathToTestDataTemplateExcel  :");
-        lblPathtotestdatatemplateexcel.setBounds(30, 177, 190, 14);
-        frame.getContentPane().add(lblPathtotestdatatemplateexcel);
+		textField_3 = new JTextField();
+		textField_3.setBounds(224, 149, 218, 20);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
 
-        JLabel lblPathtotestgeneratorexcel = new JLabel("PathToTestGeneratorExcel         :");
-        lblPathtotestgeneratorexcel.setBounds(30, 202, 190, 14);
-        frame.getContentPane().add(lblPathtotestgeneratorexcel);
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(224, 174, 218, 20);
+		frame.getContentPane().add(textField_4);
 
-        textField_3 = new JTextField();
-        textField_3.setBounds(224, 149, 218, 20);
-        frame.getContentPane().add(textField_3);
-        textField_3.setColumns(10);
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(224, 199, 218, 20);
+		frame.getContentPane().add(textField_5);
 
-        textField_4 = new JTextField();
-        textField_4.setColumns(10);
-        textField_4.setBounds(224, 174, 218, 20);
-        frame.getContentPane().add(textField_4);
-
-        textField_5 = new JTextField();
-        textField_5.setColumns(10);
-        textField_5.setBounds(224, 199, 218, 20);
-        frame.getContentPane().add(textField_5);
-
-        JButton btnCancel = new JButton("Reset");
-        btnCancel.addActionListener(new ActionListener() {
-
-            public void actionPerformed(final ActionEvent e) {
-                // TODO add reset functionality
-                frame.dispose();
-            }
-        });
-        btnCancel.setBounds(224, 230, 89, 23);
-        frame.getContentPane().add(btnCancel);
-        frame.setResizable(false);
-    }
+		JButton btnCancel = new JButton("Reset");
+		btnCancel.addActionListener(e -> frame.dispose());
+		btnCancel.setBounds(224, 230, 89, 23);
+		frame.getContentPane().add(btnCancel);
+		frame.setResizable(false);
+	}
 }
